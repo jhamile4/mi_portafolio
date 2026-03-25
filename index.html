@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portafolio - Jhamile</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: #020617;
+      padding: 15px;
+      text-align: center;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      animation: fadeIn 2s ease-in;
+    }
+
+    header h1 {
+      font-size: 40px;
+      margin: 10px;
+    }
+
+    header span {
+      color: #38bdf8;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .about {
+      background: #020617;
+    }
+
+    .projects {
+      background: #0f172a;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1e293b;
+      margin: 15px;
+      padding: 20px;
+      width: 280px;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      color: #38bdf8;
+    }
+
+    footer {
+      background: #020617;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- INICIO -->
+  <header id="inicio">
+    <h1>Hola 👋 soy <span>Jhamile</span></h1>
+    <p>Desarrolladora Web en formación 💻✨</p>
+  </header>
+
+  <!-- SOBRE MI -->
+  <section id="sobre" class="about">
+    <h2>Sobre mí 🌸</h2>
+    <p>
+      Me gusta programar, crear sistemas y aprender nuevas tecnologías.
+      Estoy construyendo proyectos reales como CRUDs y aplicaciones web 🚀
+    </p>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="projects">
+    <h2>Mis proyectos 💡</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Perfil Web</h3>
+        <p>Página de presentación personal</p>
+      </div>
+
+      <div class="card">
+        <h3>CRUD Usuarios</h3>
+        <p>API con Node.js y Express</p>
+      </div>
+
+      <div class="card">
+        <h3>Proyecto Futuro</h3>
+        <p>Aplicación tipo startup 🚀</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto 📩</h2>
+    <p>Email: tuemail@gmail.com</p>
+    <p>GitHub | LinkedIn</p>
+  </section>
+
+  <footer>
+    <p>© 2026 - Jhamile 💙</p>
+  </footer>
+
+</body>
+</html>
