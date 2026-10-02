@@ -2,164 +2,251 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Portafolio - Jhamile</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: white;
-      scroll-behavior: smooth;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      width: 100%;
-      background: #020617;
-      padding: 15px;
-      text-align: center;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    header {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: linear-gradient(135deg, #1e3a8a, #0f172a);
-      animation: fadeIn 2s ease-in;
-    }
-
-    header h1 {
-      font-size: 40px;
-      margin: 10px;
-    }
-
-    header span {
-      color: #38bdf8;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .about {
-      background: #020617;
-    }
-
-    .projects {
-      background: #0f172a;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .card {
-      background: #1e293b;
-      margin: 15px;
-      padding: 20px;
-      width: 280px;
-      border-radius: 15px;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card h3 {
-      color: #38bdf8;
-    }
-
-    footer {
-      background: #020617;
-      padding: 20px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jhamile Macavilca | Desarrolladora Web y Sistemas con Análisis de Negocio</title>
+  
+  <meta name="description" content="Portafolio profesional de Jhamile Macavilca, Desarrolladora Web y Sistemas con Análisis de Negocio, especializada en arquitectura de software, ERPs, SaaS y desarrollo fullstack.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, Syne, Playfair Display, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#sobre">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">Contacto</a>
+  <!-- NAVBAR EDITORIAL -->
+  <nav class="nav-editorial">
+    <a href="#inicio" class="nav-logo">Jhamile Macavilca</a>
+    <ul class="nav-links">
+      <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+      <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+      <li><a href="#especializacion" class="nav-link">Especialización</a></li>
+      <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
   </nav>
 
-  <!-- INICIO -->
-  <header id="inicio">
-    <h1>Hola 👋 soy <span>Jhamile</span></h1>
-    <p>Desarrolladora Web en formación 💻✨</p>
-  </header>
+  <!-- SECCIÓN 1: HERO DARK (SPLIT EDITORIAL 50/50) -->
+  <header id="inicio" class="hero-editorial">
+    <div class="hero-left-col">
+      <div class="hero-top-subtitle">Portafolio Profesional</div>
+      
+      <h1 class="hero-stacked-title">
+        <span>Desarrolladora</span>
+        <span>Web & Sistemas</span>
+        <span>Análisis</span>
+        <span>de Negocio</span>
+      </h1>
 
-  <!-- SOBRE MI -->
-  <section id="sobre" class="about">
-    <h2>Sobre mí 🌸</h2>
-    <p>
-      Me gusta programar, crear sistemas y aprender nuevas tecnologías.
-      Estoy construyendo proyectos reales como CRUDs y aplicaciones web 🚀
-    </p>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="projects">
-    <h2>Mis proyectos 💡</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Perfil Web</h3>
-        <p>Página de presentación personal</p>
-      </div>
-
-      <div class="card">
-        <h3>CRUD Usuarios</h3>
-        <p>API con Node.js y Express</p>
-      </div>
-
-      <div class="card">
-        <h3>Proyecto Futuro</h3>
-        <p>Aplicación tipo startup 🚀</p>
+      <div class="hero-bottom-bar">
+        <div class="hero-portafolio-tag">PORTAFOLIO</div>
+        <a href="#sobre-mi" class="hero-arrow-btn" aria-label="Ir a la siguiente sección">↓</a>
       </div>
     </div>
 
+    <div class="hero-right-col">
+      <img src="assets/images/hero_leather.jpg" alt="Jhamile Macavilca - Leather Editorial Fullstack Workspace">
+    </div>
+  </header>
+
+  <!-- SECCIÓN 2: PERFIL Y GALERÍA CIRCULAR -->
+  <section id="sobre-mi" class="profile-section">
+    <div class="profile-container">
+      <div class="profile-info">
+        <h2 class="editorial-title">Jhamile<br>Macavilca</h2>
+        <p class="serif-italic">Desarrolladora Web y Sistemas con Análisis de Negocio</p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted-light);">
+          Transformo necesidades de negocio complejas en código robusto y mantenible. Especializada en la creación de paneles administrativos, microservicios, e-commerce e integración de APIs de alto flujo.
+        </p>
+      </div>
+
+      <div class="circles-grid">
+        <div class="circle-avatar circle-avatar-1">
+          <img src="assets/images/portrait.jpg" alt="Jhamile Macavilca - Desarrolladora Web">
+        </div>
+        <div class="circle-avatar circle-avatar-2">
+          <img src="assets/images/hero.jpg" alt="Workspace Fullstack">
+        </div>
+        <div class="circle-avatar circle-avatar-3">
+          <img src="assets/images/project_saas.jpg" alt="SaaS Dashboard Systems">
+        </div>
+        <div class="circle-avatar circle-avatar-4">
+          <img src="assets/images/project_ecommerce.jpg" alt="E-commerce Architecture">
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <h2>Contacto 📩</h2>
-    <p>Email: tuemail@gmail.com</p>
-    <p>GitHub | LinkedIn</p>
+  <!-- SECCIÓN 3: MI VIDA Y MI TRABAJO (CREAM EDITORIAL) -->
+  <section class="editorial-cream-section">
+    <div class="cream-container">
+      <div class="cream-image-wrapper">
+        <div class="cream-image-card">
+          <img src="assets/images/portrait.jpg" alt="Jhamile en el trabajo">
+        </div>
+      </div>
+
+      <div class="cream-text-content">
+        <h2 class="serif-italic">Mi vida y mi trabajo</h2>
+        <p>
+          Hacer código con estándares de calidad es una meta constante. Creo firmemente que un buen sistema web combina una experiencia de usuario deslumbrante con una lógica de backend sin fisuras.
+        </p>
+        <p>
+          Mis proyectos abarcan desde plataformas SaaS multi-tenant hasta motores de procesamiento de datos en tiempo real. Me enfoco en aplicar Clean Architecture, metodologías ágiles y pruebas rigurosas para asegurar la máxima durabilidad de cada producto.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2026 - Jhamile 💙</p>
+  <!-- SECCIÓN 4: ÁREAS DE ESPECIALIZACIÓN -->
+  <section id="especializacion" class="specialization-section">
+    <div class="section-header-editorial">
+      <h2 class="editorial-title">Áreas de especialización</h2>
+    </div>
+
+    <div class="spec-cards-grid">
+      <!-- Tarjeta 1: Habilidades -->
+      <div class="spec-card">
+        <div class="spec-content">
+          <h3 class="spec-title editorial-title">Habilidades</h3>
+          <ul class="spec-list">
+            <li>Frontend (React, Next.js, Vue, TypeScript)</li>
+            <li>Backend (Node.js, Express, Python FastAPI)</li>
+            <li>Bases de Datos (PostgreSQL, MongoDB, Redis)</li>
+            <li>Arquitectura API REST & GraphQL</li>
+            <li>DevOps (Docker, Git, CI/CD, Vercel, Render)</li>
+          </ul>
+        </div>
+        <div class="spec-image spec-image-1"></div>
+      </div>
+
+      <!-- Tarjeta 2: Servicios -->
+      <div class="spec-card">
+        <div class="spec-content">
+          <h3 class="spec-title editorial-title">Servicios</h3>
+          <ul class="spec-list">
+            <li>Desarrollo de Sistemas Fullstack a Medida</li>
+            <li>Plataformas SaaS & Dashboards ERP</li>
+            <li>E-Commerce de Alta Escala y Conversión</li>
+            <li>Refactorización & Optimización de Código</li>
+            <li>Diseño e Integración de Microservicios</li>
+          </ul>
+        </div>
+        <div class="spec-image spec-image-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: SHOWCASE DE PROYECTOS MEDIANOS Y GRANDES -->
+  <section id="proyectos" class="projects-section">
+    <div class="projects-container">
+      <div class="projects-header">
+        <div>
+          <span style="color: var(--accent-blue); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;">PROYECTOS DESTACADOS</span>
+          <h2 class="editorial-title" style="font-size: clamp(2.2rem, 4vw, 3.5rem); margin-top: 8px;">Proyectos Medianos & Grandes</h2>
+        </div>
+
+        <!-- Filtros Dinámicos -->
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="saas">SaaS & ERP</button>
+          <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+          <button class="filter-btn" data-filter="api">APIs & Backend</button>
+        </div>
+      </div>
+
+      <!-- Grid de Proyectos -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Renderizado dinámicamente desde js/data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6: BLOQUE DE CITA EDITORIAL -->
+  <section class="quote-section">
+    <div class="quote-container">
+      <blockquote class="quote-text">
+        "Hay un problema elegante en cada desafío técnico y el trabajo del desarrollador es construir su mejor solución."
+      </blockquote>
+      <div class="quote-author">— JHAMILE MACAVILCA, FULLSTACK DEVELOPER</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 7: FOOTER DARK "PONTE EN CONTACTO" -->
+  <footer id="contacto" class="footer-contact">
+    <div class="footer-grid">
+      <div class="footer-info">
+        <h2 class="footer-title editorial-title">PONTE EN<br>CONTACTO</h2>
+
+        <div class="footer-details">
+          <div>
+            <div class="detail-label">CORREO ELECTRÓNICO</div>
+            <div class="detail-value">
+              <a href="mailto:jhamile.dev@gmail.com">jhamile.dev@gmail.com</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="detail-label">REDES PROFESIONALES</div>
+            <div class="detail-value">
+              <a href="https://github.com/jhamile4" target="_blank" rel="noopener">GitHub</a> | 
+              <a href="https://www.linkedin.com/in/jhamile-jhersy-macavilca-nolasco-239800361/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="detail-label">UBICACIÓN</div>
+            <div class="detail-value">Disponible para Trabajo Remoto / Global</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-image"></div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div>© 2026 Jhamile Macavilca — Todos los derechos reservados.</div>
+      <div>Diseño Editorial & Fullstack Systems</div>
+    </div>
   </footer>
 
+  <!-- MODAL DRAWER PARA DETALLE DE PROYECTOS & ARQUITECTURA -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-drawer">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">&times;</button>
+      
+      <div class="modal-header-badge" id="modalBadge">SISTEMA FULLSTACK</div>
+      <h2 class="modal-title" id="modalTitle">Título del Proyecto</h2>
+      
+      <div class="modal-image">
+        <img id="modalImage" src="" alt="Previsualización del proyecto">
+      </div>
+
+      <div class="modal-section-title">DESCRIPCIÓN DEL PROYECTO</div>
+      <p id="modalDescription" style="color: var(--text-muted-light); line-height: 1.8; font-size: 1.05rem;"></p>
+
+      <div class="modal-section-title">TECNOLOGÍAS & STACK</div>
+      <div id="modalStackTags" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+
+      <div class="modal-section-title">ESQUEMA DE ARQUITECTURA DEL SISTEMA</div>
+      <pre class="architecture-box" id="modalArchitecture"></pre>
+
+      <div class="modal-link-group">
+        <a id="modalDemoBtn" href="#" target="_blank" rel="noopener" class="btn-editorial btn-primary" style="flex:1;">
+          🚀 Ver Demo en Vivo
+        </a>
+        <a id="modalGithubBtn" href="#" target="_blank" rel="noopener" class="btn-editorial btn-outline" style="flex:1;">
+          🐙 Código en GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
