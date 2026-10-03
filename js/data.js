@@ -13,7 +13,7 @@ const projectsData = [
     description: "Plataforma SaaS multi-tenant a gran escala para gestión de inventarios, analítica financiera en tiempo real, roles RBAC y módulo de facturación.",
     fullDescription: "Este sistema ERP está diseñado para empresas medianas y grandes que requieren alta concurrencia. Cuenta con paneles analíticos interactivos, control de inventarios con notificaciones en tiempo real, autenticación OAuth2/JWT y pasarela de pagos automatizada.",
     stack: ["Node.js", "Express", "React", "TypeScript", "PostgreSQL", "Redis", "Docker"],
-    demoUrl: "https://saas-enterprise-demo.vercel.app",
+    demoUrl: "projects/saas-erp/index.html",
     githubUrl: "https://github.com/jhamile4/saas-enterprise-erp",
     architecture: `
 ┌─────────────────────────────────────────────────────────────┐
@@ -36,12 +36,12 @@ const projectsData = [
   },
   {
     id: "aura-ecommerce",
-    title: "Aura & Co. Luxury E-Commerce Engine",
+    title: "E-Commerce Luxury & Stripe Platform (Tesis de Grado)",
     category: "ecommerce",
-    categoryLabel: "Plataforma Fullstack",
+    categoryLabel: "Proyecto de Tesis Fullstack",
     thumb: "assets/images/project_ecommerce.jpg",
-    description: "Plataforma e-commerce para marcas de moda con catálogo dinámico, carrito en tiempo real, búsqueda con Algolia y cobros seguros.",
-    fullDescription: "Aplicación Fullstack de comercio electrónico construida con arquitectura Jamstack. Implementa Server Side Rendering (SSR) para SEO optimizado, actualización instantánea de stock, filtros avanzados de búsqueda y panel administrativo para actualización de productos.",
+    description: "Plataforma e-commerce transaccional de alta escala desarrollada como proyecto de tesis profesional con integración completa de Stripe API.",
+    fullDescription: "Proyecto de tesis enfocado en arquitectura Jamstack y procesamiento seguro de pagos con Stripe API. Implementa Server Side Rendering (SSR) para SEO optimizado, carrito transaccional en tiempo real, webhooks de confirmación y panel de administración.",
     stack: ["Next.js", "React", "Supabase", "PostgreSQL", "Stripe API", "Tailwind CSS"],
     demoUrl: "https://aura-storefront.vercel.app",
     githubUrl: "https://github.com/jhamile4/aura-luxury-ecommerce",
