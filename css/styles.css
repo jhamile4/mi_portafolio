@@ -717,7 +717,7 @@ img {
 }
 
 .footer-image {
-  background: url('../assets/images/portrait.jpg') center/cover no-repeat;
+  background: url('../assets/images/fotojham2.jpeg') center/cover no-repeat;
   filter: grayscale(100%);
   transition: var(--transition-smooth);
 }
