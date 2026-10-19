@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const projectsGrid = document.getElementById('projectsGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  
+
   // Modal Elements
   const modalOverlay = document.getElementById('modalOverlay');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
@@ -13,27 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modalTitle');
   const modalImage = document.getElementById('modalImage');
   const modalDescription = document.getElementById('modalDescription');
+  const modalRole = document.getElementById('modalRole');
+  const modalHighlights = document.getElementById('modalHighlights');
   const modalStackTags = document.getElementById('modalStackTags');
   const modalArchitecture = document.getElementById('modalArchitecture');
   const modalDemoBtn = document.getElementById('modalDemoBtn');
   const modalGithubBtn = document.getElementById('modalGithubBtn');
+  const modalPrivateNote = document.getElementById('modalPrivateNote');
+
+  // Botones de enlaces: solo se muestran los que existen
+  function linkButtons(project) {
+    const buttons = [];
+    if (project.githubUrl) {
+      buttons.push(`<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline">Código ↗</a>`);
+    }
+    if (project.demoUrl) {
+      buttons.push(`<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline">Demo ↗</a>`);
+    }
+    return buttons.join('');
+  }
 
   // Render Projects
   function renderProjects(filter = 'all') {
     if (!projectsGrid) return;
-    
+
     projectsGrid.innerHTML = '';
-    
-    const filteredProjects = filter === 'all' 
-      ? projectsData 
-      : projectsData.filter(p => p.category === filter);
+
+    const filteredProjects = filter === 'all'
+      ? projectsData
+      : projectsData.filter(p => p.categories.includes(filter));
 
     filteredProjects.forEach(project => {
       const card = document.createElement('div');
       card.className = 'project-card';
       card.innerHTML = `
         <div class="project-thumb">
-          <img src="${project.thumb}" alt="${project.title}" loading="lazy">
+          <img src="${project.thumb}" alt="Captura de ${project.title}" loading="lazy">
           <span class="project-category-badge">${project.categoryLabel}</span>
         </div>
         <div class="project-info">
@@ -44,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="project-actions">
             <button class="btn-editorial btn-primary open-details-btn" data-id="${project.id}">
-              Ver Detalle & Enlaces
+              Ver detalle
             </button>
-            <a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="btn-editorial btn-outline">
-              Demo ↗
-            </a>
+            ${linkButtons(project)}
           </div>
+          ${project.privateNote ? `<p class="project-private-note">🔒 ${project.privateNote}</p>` : ''}
         </div>
       `;
       projectsGrid.appendChild(card);
@@ -74,6 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  function showLink(button, url) {
+    button.style.display = url ? '' : 'none';
+    if (url) button.href = url;
+  }
+
   // Open Project Modal Drawer
   function openProjectModal(projectId) {
     const project = projectsData.find(p => p.id === projectId);
@@ -82,17 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBadge.textContent = project.categoryLabel;
     modalTitle.textContent = project.title;
     modalImage.src = project.thumb;
-    modalImage.alt = project.title;
+    modalImage.alt = `Captura de ${project.title}`;
     modalDescription.textContent = project.fullDescription;
-    
+    modalRole.textContent = project.role;
+
+    modalHighlights.innerHTML = '';
+    project.highlights.forEach(text => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      modalHighlights.appendChild(li);
+    });
+
     modalStackTags.innerHTML = project.stack
       .map(tech => `<span class="tech-tag" style="background: var(--bg-dark-surface); padding: 6px 12px; border: 1px solid var(--border-dark); border-radius: 6px; font-weight:600;">${tech}</span>`)
       .join('');
-      
+
     modalArchitecture.textContent = project.architecture;
-    
-    modalDemoBtn.href = project.demoUrl;
-    modalGithubBtn.href = project.githubUrl;
+
+    showLink(modalDemoBtn, project.demoUrl);
+    showLink(modalGithubBtn, project.githubUrl);
+    modalPrivateNote.textContent = project.privateNote ? `🔒 ${project.privateNote}` : '';
+    modalPrivateNote.style.display = project.privateNote ? '' : 'none';
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden'; // prevent scroll

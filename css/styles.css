@@ -524,6 +524,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top; /* las capturas muestran la cabecera de cada app */
   transition: var(--transition-smooth);
 }
 
@@ -899,4 +900,23 @@ img {
   .footer-image {
     min-height: 350px;
   }
+}
+
+/* Nota de repositorio privado y lista de logros del modal */
+.project-private-note {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted-light);
+}
+
+.modal-highlights {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted-light);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.modal-highlights li + li {
+  margin-top: 8px;
 }

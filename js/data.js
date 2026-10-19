@@ -1,110 +1,140 @@
 /**
- * Data de Proyectos Medianos y Grandes - Jhamile Macavilca
- * Fullstack Web Developer
+ * Proyectos - Jhamile Macavilca
+ * Solo se describe lo que existe en el código de cada proyecto.
+ * githubUrl / demoUrl en null = el botón no se muestra.
  */
 
 const projectsData = [
   {
-    id: "saas-erp",
-    title: "SaaS Enterprise ERP & Analytics",
-    category: "saas",
-    categoryLabel: "Sistema Fullstack Grande",
-    thumb: "assets/images/project_saas.jpg",
-    description: "Plataforma SaaS multi-tenant a gran escala para gestión de inventarios, analítica financiera en tiempo real, roles RBAC y módulo de facturación.",
-    fullDescription: "Este sistema ERP está diseñado para empresas medianas y grandes que requieren alta concurrencia. Cuenta con paneles analíticos interactivos, control de inventarios con notificaciones en tiempo real, autenticación OAuth2/JWT y pasarela de pagos automatizada.",
-    stack: ["Node.js", "Express", "React", "TypeScript", "PostgreSQL", "Redis", "Docker"],
-    demoUrl: "projects/saas-erp/index.html",
+    id: "prestafacil",
+    title: "PrestaFácil — Sistema de Gestión de Préstamos",
+    categories: ["backend"],
+    categoryLabel: "API REST .NET · Proyecto personal",
+    thumb: "assets/images/prestafacil.jpg",
+    description: "API para una caja o financiera: evaluación crediticia, cronograma de cuotas por sistema francés, pagos con mora, reportes y control de acceso por roles.",
+    fullDescription: "Sistema que cubre todo el ciclo de un préstamo: registro del cliente, simulación, evaluación de capacidad de pago, aprobación, desembolso, cronograma, cobranza con mora y reportes. Lo diseñé y desarrollé completo, desde los requerimientos y el modelo de datos hasta el despliegue con Docker y la integración continua.",
+    role: "Proyecto personal: requerimientos, modelo de datos, backend, pruebas, Docker y CI.",
+    highlights: [
+      "Arquitectura en capas (Domain, Application, Infrastructure, API) con ASP.NET Core y Entity Framework Core sobre SQL Server.",
+      "Cálculo de cuotas por sistema francés idéntico en C# y en SQL Server; las pruebas detectaron y corrigieron un error de precisión en el script SQL.",
+      "Evaluación crediticia automática: tope de 40 % del ingreso neto, máximo 2 préstamos activos, sin cuotas vencidas y segregación de funciones al aprobar.",
+      "Pagos aplicados a la cuota más antigua (mora → interés → capital), anulación con reversión y control de concurrencia con ROWVERSION.",
+      "Autenticación JWT con roles (Admin, Asesor, Cajero), contraseñas con BCrypt y límite de intentos de login.",
+      "Procedimientos almacenados para reportes y un proceso diario de mora con BackgroundService.",
+      "118 pruebas unitarias con xUnit; GitHub Actions compila, prueba, revisa vulnerabilidades y ejecuta una prueba de humo con Docker Compose."
+    ],
+    stack: ["C#", ".NET 10", "ASP.NET Core", "Entity Framework Core", "SQL Server", "JWT", "xUnit", "Docker", "GitHub Actions", "Swagger"],
+    demoUrl: null,
+    githubUrl: "https://github.com/jhamile4/prestafacil",
+    architecture: `
+  [Cliente / Swagger] ── JWT Bearer ──►  [ASP.NET Core Web API]
+                                               │  Controladores + roles
+                                               ▼
+                                      [Application] Servicios, DTOs,
+                                               │     FluentValidation
+                                               ▼
+                                      [Domain] Préstamo, Cuota, Pago
+                                               │  cálculo y reglas
+                                               ▼
+                                      [Infrastructure] EF Core + ADO.NET
+                                               │
+                                               ▼
+                                [SQL Server] tablas + procedimientos
+    `
+  },
+  {
+    id: "crecio",
+    title: "CRECIO — Plataforma para Negocios y Emprendedores",
+    categories: ["fullstack"],
+    categoryLabel: "Full Stack · Proyecto de tesis",
+    thumb: "assets/images/crecio.jpg",
+    description: "Sitio público con tiendas de emprendedores y un panel para cada negocio: inventario, ventas, pedidos, finanzas y marketing con IA, con pagos en Stripe.",
+    fullDescription: "Plataforma en dos partes. En el sitio público, los clientes encuentran tiendas, compran con Stripe, siguen sus pedidos (delivery o recojo) y dejan reseñas de compras verificadas. En el panel, cada negocio gestiona inventario, ventas, clientes, finanzas y metas, y genera publicaciones con IA que se publican o programan en Facebook e Instagram.",
+    role: "Proyecto de tesis: desarrollo de la API, el sitio público y el panel de negocios.",
+    highlights: [
+      "Tres aplicaciones: API REST en Node.js/Express y dos frontends en React (sitio público y panel), cada uno desplegable por separado.",
+      "Base de datos PostgreSQL en Supabase con migraciones versionadas y almacenamiento de imágenes.",
+      "Pagos con Stripe, control de stock al vender y seguimiento de pedidos por estado.",
+      "Autenticación con JWT y bcrypt, recuperación de contraseña por correo y un negocio por cuenta.",
+      "Marketing con IA (Groq / OpenAI): genera textos e imágenes y publica o programa en Facebook e Instagram."
+    ],
+    stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Supabase", "Stripe", "JWT"],
+    demoUrl: null,
+    githubUrl: null,
+    privateNote: "Repositorio privado de Tecsup. Código disponible a solicitud.",
+    architecture: `
+  [Sitio público - React]      [Panel de negocios - React]
+             │                              │
+             └──────────────┬───────────────┘
+                            ▼  HTTPS + JWT
+                 [API REST - Node.js / Express]
+                            │
+       ┌────────────┬───────┴──────┬──────────────────┐
+       ▼            ▼              ▼                  ▼
+  [Supabase      [Stripe]    [Groq / OpenAI]   [Meta: Facebook
+   PostgreSQL                 IA de marketing     e Instagram]
+   + Storage]
+    `
+  },
+  {
+    id: "muniapp",
+    title: "MuniApp — Reporte de Incidencias Municipales",
+    categories: ["fullstack", "movil"],
+    categoryLabel: "Web y Móvil · Proyecto integrador en equipo",
+    thumb: "assets/images/muniapp.jpg",
+    description: "Los ciudadanos reportan incidencias de su comunidad desde la web o el celular, y la municipalidad las gestiona y prioriza desde un panel con apoyo de IA.",
+    fullDescription: "Monorepo con dos backends, dos frontends web y una app Android. El ciudadano reporta incidencias con ubicación en el mapa y hace su seguimiento; el personal municipal las gestiona desde un panel administrativo que usa modelos de IA locales (Ollama) para priorizar los reportes, moderar las imágenes y generar reportes en PDF.",
+    role: "Integrante de un equipo de 5. Desarrollé parte del frontend web del ciudadano (autenticación con token, panel principal, términos y condiciones) y corregí la carga del mapa en la app Android.",
+    highlights: [
+      "Backend ciudadano en Java con Spring Boot y backend administrativo en Python con Django REST Framework, ambos con JWT y MySQL.",
+      "Frontend del ciudadano en React con TypeScript, mapas con Leaflet y notificaciones en tiempo real con STOMP/SockJS.",
+      "App Android en Kotlin con mapas OpenStreetMap.",
+      "IA local con Ollama (Llama y LLaVA): priorización de reportes, moderación de imágenes y reportes en PDF.",
+      "Integración continua con GitHub Actions."
+    ],
+    stack: ["Java", "Spring Boot", "Python", "Django REST", "React", "TypeScript", "Kotlin", "MySQL", "Leaflet", "Ollama"],
+    demoUrl: null,
+    githubUrl: null,
+    privateNote: "Repositorio privado de Tecsup. Código disponible a solicitud.",
+    architecture: `
+  [Web ciudadano - React]   [App Android - Kotlin]   [Panel municipal - React]
+            │                        │                         │
+            └───────────┬────────────┘                         │
+                        ▼                                      ▼
+          [Backend ciudadano - Spring Boot]    [Backend admin - Django REST]
+                        │                                      │
+                        └──────────────────┬───────────────────┘
+                                           ▼
+                                      [MySQL 8]      [Ollama: Llama / LLaVA]
+    `
+  },
+  {
+    id: "strata-erp",
+    title: "Strata ERP — Inventario y Analítica",
+    categories: ["fullstack"],
+    categoryLabel: "Full Stack · Prototipo",
+    thumb: "assets/images/strata-erp.jpg",
+    description: "Dashboard de inventario con alertas de reposición, márgenes por producto y vistas distintas según el rol del usuario.",
+    fullDescription: "Prototipo de un módulo de inventario con analítica. Registra productos y categorías, clasifica el stock automáticamente según el mínimo configurado y calcula el margen de cada producto. La vista cambia según el rol elegido: el personal de almacén no ve los costos. Es un prototipo: no tiene inicio de sesión y algunos indicadores y reportes son de demostración.",
+    role: "Proyecto personal: análisis, diseño y desarrollo.",
+    highlights: [
+      "Next.js 15 con App Router, React 19 y TypeScript; API Routes para inventario e indicadores.",
+      "Prisma ORM sobre PostgreSQL (Supabase) con datos de prueba.",
+      "Clasificación automática del stock: normal, reorden o crítico según el stock mínimo.",
+      "Costos y márgenes ocultos según el rol (demostración, sin autenticación).",
+      "Gráficos con Recharts y documentación de requerimientos, arquitectura y plan de implementación."
+    ],
+    stack: ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Recharts"],
+    demoUrl: null,
     githubUrl: "https://github.com/jhamile4/saas-enterprise-erp",
     architecture: `
-┌─────────────────────────────────────────────────────────────┐
-│                 ARQUITECTURA DEL SISTEMA                   │
-└─────────────────────────────────────────────────────────────┘
-  [CLIENTE WEB] (React + TypeScript + Tailwind CSS)
-        │ (HTTPS / WebSockets)
-        ▼
-  [API GATEWAY] (Express.js / Node.js + JWT Auth Middleware)
-        │
-   ┌────┴─────────────────────────────┐
-   ▼                                  ▼
-[SERVICIO ANALÍTICO]        [GESTOR DE TRANSACCIONES]
- (PostgreSQL Cluster)         (Redis Cache + Worker Queue)
-   │                                  │
-   └─────────────────┬────────────────┘
-                     ▼
-             [TERCEROS API] (Stripe Payments & AWS S3 Storage)
-    `
-  },
-  {
-    id: "aura-ecommerce",
-    title: "E-Commerce Luxury & Stripe Platform (Tesis de Grado)",
-    category: "ecommerce",
-    categoryLabel: "Proyecto de Tesis Fullstack",
-    thumb: "assets/images/project_ecommerce.jpg",
-    description: "Plataforma e-commerce transaccional de alta escala desarrollada como proyecto de tesis profesional con integración completa de Stripe API.",
-    fullDescription: "Proyecto de tesis enfocado en arquitectura Jamstack y procesamiento seguro de pagos con Stripe API. Implementa Server Side Rendering (SSR) para SEO optimizado, carrito transaccional en tiempo real, webhooks de confirmación y panel de administración.",
-    stack: ["Next.js", "React", "Supabase", "PostgreSQL", "Stripe API", "Tailwind CSS"],
-    demoUrl: "https://aura-storefront.vercel.app",
-    githubUrl: "https://github.com/jhamile4/aura-luxury-ecommerce",
-    architecture: `
-┌─────────────────────────────────────────────────────────────┐
-│                 ARQUITECTURA E-COMMERCE                    │
-└─────────────────────────────────────────────────────────────┘
-  [NEXT.JS APP ROUTER] ── (SSR & Edge Middleware)
-        │
-   ┌────┴────────────────────────────────┐
-   ▼                                     ▼
-[SUPABASE CLOUD DB]             [STRIPE PAYMENT GATEWAY]
- (PostgreSQL DB + Auth + Storage) (Webhooks de Procesamiento)
-   │
-   ▼
-[ALGOLIA SEARCH ENGINE] (Indexación instantánea de productos)
-    `
-  },
-  {
-    id: "fastapi-microservices",
-    title: "High-Concurrency API Engine & Microservices",
-    category: "api",
-    categoryLabel: "Sistema Backend Mediano",
-    thumb: "assets/images/hero.jpg",
-    description: "Motor de APIs RESTful asíncronas de alta velocidad con documentación interactiva Swagger/OpenAPI y balanceo de carga.",
-    fullDescription: "Arquitectura de microservicios desarrollada con FastAPI y Python 3.11. Diseñada para procesar miles de peticiones por segundo, con pipeline de integración continua, pruebas unitarias automatizadas con PyTest y contenedorización completa con Docker Compose.",
-    stack: ["Python", "FastAPI", "MongoDB", "Redis", "Docker", "Swagger", "PyTest"],
-    demoUrl: "https://api-engine-docs.render.com",
-    githubUrl: "https://github.com/jhamile4/fastapi-microservices-engine",
-    architecture: `
-┌─────────────────────────────────────────────────────────────┐
-│               ARQUITECTURA DE MICROSERVICIOS               │
-└─────────────────────────────────────────────────────────────┘
-  [NGINX REVERSE PROXY / LOAD BALANCER]
-        │
-   ┌────┴─────────────────────────────┐
-   ▼                                  ▼
-[FASTAPI CONTAINER #1]       [FASTAPI CONTAINER #2]
-   │                                  │
-   └─────────────────┬────────────────┘
-                     ▼
-          [MONGODB REPLICA SET] + [REDIS RATE LIMITER]
-    `
-  },
-  {
-    id: "taskflow-pro",
-    title: "TaskFlow Pro - Real-time Project Management",
-    category: "saas",
-    categoryLabel: "Sistema Web Mediano",
-    thumb: "assets/images/portrait.jpg",
-    description: "Aplicación interactiva para gestión de proyectos, tableros Kanban interactivos drag-and-drop y chat colaborativo websockets.",
-    fullDescription: "Plataforma colaborativa para equipos de desarrollo software. Permite crear sprints de trabajo, asignar tareas con fechas límite, adjuntar archivos y sincronización bidireccional instantánea entre usuarios mediante WebSockets.",
-    stack: ["Vue.js 3", "Pinia", "Node.js", "Socket.io", "MongoDB", "Express"],
-    demoUrl: "https://taskflow-app.vercel.app",
-    githubUrl: "https://github.com/jhamile4/taskflow-collaboration-app",
-    architecture: `
-┌─────────────────────────────────────────────────────────────┐
-│                 ARQUITECTURA EN TIEMPO REAL                 │
-└─────────────────────────────────────────────────────────────┘
-  [VUE 3 SPA CLIENT] ◄─── (WebSockets Socket.io) ───► [NODE.JS SERVER]
-                                                             │
-                                                             ▼
-                                                    [MONGODB ATLAS DB]
+  [Next.js App Router - React 19 + Tailwind]
+               │  fetch
+               ▼
+  [API Routes]  /api/inventory   /api/analytics/kpis
+               │
+               ▼
+        [Prisma ORM]  ──►  [PostgreSQL - Supabase]
     `
   }
 ];
