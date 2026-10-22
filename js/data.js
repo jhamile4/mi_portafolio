@@ -8,12 +8,12 @@ const projectsData = [
   {
     id: "prestafacil",
     title: "PrestaFácil — Sistema de Gestión de Préstamos",
-    categories: ["backend"],
-    categoryLabel: "API REST .NET · Proyecto personal",
+    categories: ["backend", "fullstack"],
+    categoryLabel: "Full Stack .NET + React · Proyecto personal",
     thumb: "assets/images/prestafacil.jpg",
-    description: "API para una caja o financiera: evaluación crediticia, cronograma de cuotas por sistema francés, pagos con mora, reportes y control de acceso por roles.",
-    fullDescription: "Sistema que cubre todo el ciclo de un préstamo: registro del cliente, simulación, evaluación de capacidad de pago, aprobación, desembolso, cronograma, cobranza con mora y reportes. Lo diseñé y desarrollé completo, desde los requerimientos y el modelo de datos hasta el despliegue con Docker y la integración continua.",
-    role: "Proyecto personal: requerimientos, modelo de datos, backend, pruebas, Docker y CI.",
+    description: "Sistema para una caja o financiera, con API en .NET y app en React: evaluación crediticia, cronograma por sistema francés, cobranza con mora, reportes y pantallas según el rol.",
+    fullDescription: "Sistema que cubre todo el ciclo de un préstamo: registro del cliente, simulación, evaluación de capacidad de pago, aprobación, desembolso, cronograma, cobranza con mora y reportes. Cada rol (administrador, asesor y cajero) trabaja en su propia pantalla. Lo diseñé y desarrollé completo, desde los requerimientos y el modelo de datos hasta la interfaz, Docker y la integración continua.",
+    role: "Proyecto personal: requerimientos, modelo de datos, backend, frontend, pruebas, Docker y CI.",
     highlights: [
       "Arquitectura en capas (Domain, Application, Infrastructure, API) con ASP.NET Core y Entity Framework Core sobre SQL Server.",
       "Cálculo de cuotas por sistema francés idéntico en C# y en SQL Server; las pruebas detectaron y corrigieron un error de precisión en el script SQL.",
@@ -21,13 +21,14 @@ const projectsData = [
       "Pagos aplicados a la cuota más antigua (mora → interés → capital), anulación con reversión y control de concurrencia con ROWVERSION.",
       "Autenticación JWT con roles (Admin, Asesor, Cajero), contraseñas con BCrypt y límite de intentos de login.",
       "Procedimientos almacenados para reportes y un proceso diario de mora con BackgroundService.",
-      "118 pruebas unitarias con xUnit; GitHub Actions compila, prueba, revisa vulnerabilidades y ejecuta una prueba de humo con Docker Compose."
+      "Frontend en React con TypeScript, Tailwind CSS y TanStack Query: simulador con evaluación, caja con recibo de cómo se aplicó el pago y reportes con gráficos.",
+      "119 pruebas con xUnit y 24 con Vitest; GitHub Actions compila, prueba, revisa vulnerabilidades y levanta SQL Server, API y frontend con Docker Compose para una prueba de humo."
     ],
-    stack: ["C#", ".NET 10", "ASP.NET Core", "Entity Framework Core", "SQL Server", "JWT", "xUnit", "Docker", "GitHub Actions", "Swagger"],
+    stack: ["C#", "ASP.NET Core", "Entity Framework Core", "SQL Server", "React", "TypeScript", "Tailwind CSS", "JWT", "xUnit", "Docker", "GitHub Actions"],
     demoUrl: null,
     githubUrl: "https://github.com/jhamile4/prestafacil",
     architecture: `
-  [Cliente / Swagger] ── JWT Bearer ──►  [ASP.NET Core Web API]
+  [React + TypeScript] ── JWT Bearer ──►  [ASP.NET Core Web API]
                                                │  Controladores + roles
                                                ▼
                                       [Application] Servicios, DTOs,
