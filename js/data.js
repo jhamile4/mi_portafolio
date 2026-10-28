@@ -44,6 +44,43 @@ const projectsData = [
     `
   },
   {
+    id: "control-asistencia",
+    title: "Control de Asistencia — Laravel + Vue",
+    categories: ["backend", "fullstack"],
+    categoryLabel: "Full Stack Laravel + Vue · Proyecto personal",
+    thumb: "assets/images/control-asistencia.jpg",
+    description: "Registro de entrada y salida del personal con cálculo de tardanzas, gestión de empleados por rol y reportes por área. API en Laravel y frontend en Vue 3.",
+    fullDescription: "Sistema para que el área de RR.HH. o un supervisor registre la asistencia diaria. Al marcar la entrada calcula los minutos de tardanza según la hora de cada empleado y una tolerancia de 10 minutos. El administrador gestiona a los empleados y los reportes muestran las tardanzas por área y quiénes acumulan más en un rango de fechas.",
+    role: "Proyecto personal: modelo de datos, API, frontend y pruebas.",
+    highlights: [
+      "API REST en Laravel 13 organizada por capas: middleware, Form Requests con mensajes en español, controladores delgados, servicios con las reglas de negocio y API Resources.",
+      "Autenticación con Laravel Sanctum, tokens que vencen a las 8 horas, límite de 5 intentos de login por minuto y roles administrador y supervisor.",
+      "Reglas de negocio con respuesta 422: una entrada por día, sin marcas en el futuro, salida posterior a la entrada y empleados con historial que se desactivan en lugar de borrarse.",
+      "Migraciones con llaves foráneas e índice único, factories y seeder con datos realistas; listados sin el problema N+1 gracias a la carga anticipada.",
+      "Reporte por área con LEFT JOIN y GROUP BY que incluye las áreas sin asistencias, y ranking de empleados con más tardanzas.",
+      "Frontend en Vue 3 con Composition API y TypeScript: Vue Router con guardia por rol, Pinia para la sesión, interceptores de axios y errores de validación mostrados en cada campo.",
+      "31 pruebas con PHPUnit y 9 con Vitest; las pruebas fijan la fecha y la hora para que el cálculo de tardanzas sea reproducible."
+    ],
+    stack: ["PHP", "Laravel", "Sanctum", "MySQL", "Vue 3", "TypeScript", "Pinia", "Vue Router", "Tailwind CSS", "PHPUnit", "Vitest"],
+    demoUrl: null,
+    githubUrl: "https://github.com/jhamile4/control-asistencia",
+    architecture: `
+  [Vue 3 + TypeScript] ── axios + Bearer token ──►  [Laravel API /api/v1]
+                                                       │  auth:sanctum, rol, throttle
+                                                       ▼
+                                              [Form Request] valida
+                                                       │
+                                                       ▼
+                                              [Controller] delega y responde
+                                                       │
+                                                       ▼
+                                              [Service] reglas de negocio
+                                                       │
+                                                       ▼
+                                     [Eloquent / Query Builder] ──► [MySQL]
+    `
+  },
+  {
     id: "crecio",
     title: "CRECIO — Plataforma para Negocios y Emprendedores",
     categories: ["fullstack"],
